@@ -1,4 +1,5 @@
 const express = require("express")
+const userRouter = require('./routes/user.js')
 const app = express()
 
 app.get('/' , (req , res)  => {
@@ -6,8 +7,9 @@ app.get('/' , (req , res)  => {
     console.log("Wow created own server")
     
 })
+console.log("Wow created own server")
 
-const userRouter = require('./routes/user.js')
 app.use('/user' , userRouter)
 
-app.listen(3000)
+const port = process.env.PORT || 3000
+app.listen(port)
