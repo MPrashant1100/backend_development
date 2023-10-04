@@ -1,15 +1,12 @@
 const express = require("express")
 const userRouter = require('./routes/user.js')
+const dataRouter = require('./routes/database.js')
 const app = express()
+const port = process.env.PORT || 3000
 
-app.get('/' , (req , res)  => {
-    res.send("Hi")
-    console.log("Wow created own server")
-    
-})
-console.log("Wow created own server")
+
 
 app.use('/user' , userRouter)
+app.use('/database' , dataRouter)
 
-const port = process.env.PORT || 3000
 app.listen(port)
