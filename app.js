@@ -1,20 +1,18 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const todoRouter = require('./routes/todo')
+const express = require("express")
+const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
+const router = require('./routes/user')
+const app = express()
 
-const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json())
+const port = process.env.PORT || 3000
 
-const port = process.env.PORT || 3000;
-
-mongoose.connect("mongodb://127.0.0.1:27017/local-dev", {
+mongoose.connect("mongodb://127.0.0.1.27017", {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
-    console.log("MongoDB connected")
+  useUnifiedTopoloy: true,
+}).then(()=> {
+  console.log("MongoDB connected succefully")
 })
 
-app.use('/todo', todoRouter)
-
-app.listen(port);
+app.use('/user', router)
+app.listen(port)
